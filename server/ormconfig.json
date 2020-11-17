@@ -1,0 +1,10 @@
+{
+  "type": "mongodb",
+  "host": "localhost",
+  "port": 27017,
+  "database": "clinica",
+  "useUnifiedTopology": true,
+  "entities": [
+    "./src/database/schemas/*.ts"
+  ]
+}
