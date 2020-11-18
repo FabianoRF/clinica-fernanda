@@ -9,9 +9,6 @@ class ClientData {
   client_id: ObjectID;
 
   @Column()
-  name: string;
-
-  @Column()
   personal_data: string;
 
   @Column()
@@ -24,7 +21,7 @@ class ClientData {
   e_history: string;
 
   @Column()
-  facial_evoluation: string;
+  facial_evaluation: string;
 
   @Column()
   anotations: string;

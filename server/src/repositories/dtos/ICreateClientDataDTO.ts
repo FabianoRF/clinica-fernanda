@@ -4,6 +4,6 @@ export default interface ICreateClientDataDTO {
   habits: string;
   c_history: string;
   e_history: string;
-  facial_evoluation: string;
+  facial_evaluation: string;
   anotations: string;
 }

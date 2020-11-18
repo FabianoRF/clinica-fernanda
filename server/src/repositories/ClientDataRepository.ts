@@ -17,7 +17,7 @@ class ClientDataRepository implements IClientDataRepository {
     habits,
     c_history,
     e_history,
-    facial_evoluation,
+    facial_evaluation,
     anotations,
   }: ICreateClientDataDTO): Promise<ClientData> {
     const clientData = this.ormRepository.create({
@@ -26,7 +26,7 @@ class ClientDataRepository implements IClientDataRepository {
       habits,
       c_history,
       e_history,
-      facial_evoluation,
+      facial_evaluation,
       anotations,
     });
 
@@ -35,10 +35,10 @@ class ClientDataRepository implements IClientDataRepository {
     return clientData;
   }
 
-  public async findById(id: string): Promise<ClientData | undefined> {
-    const clients = this.ormRepository.findOne(id);
+  public async findById(client_id: string): Promise<ClientData | undefined> {
+    const client = this.ormRepository.findOne({ where: { client_id } });
 
-    return clients;
+    return client;
   }
 
   public async update({
@@ -47,7 +47,7 @@ class ClientDataRepository implements IClientDataRepository {
     habits,
     c_history,
     e_history,
-    facial_evoluation,
+    facial_evaluation,
     anotations,
   }: ICreateClientDataDTO): Promise<ClientData | undefined> {
     let clientData = await this.ormRepository.findOne({
@@ -61,7 +61,7 @@ class ClientDataRepository implements IClientDataRepository {
         habits,
         c_history,
         e_history,
-        facial_evoluation,
+        facial_evaluation,
         anotations,
       };
 

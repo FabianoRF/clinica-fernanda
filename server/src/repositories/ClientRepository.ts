@@ -26,11 +26,7 @@ class ClientRepository implements IClientRepository {
   }
 
   public async delete(id: string): Promise<void> {
-    const client = await this.ormRepository.findOne(id);
-
-    if (client) {
-      await this.ormRepository.remove(client);
-    }
+    await this.ormRepository.delete(id);
   }
 }
 

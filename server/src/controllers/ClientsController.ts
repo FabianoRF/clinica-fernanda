@@ -4,6 +4,8 @@ import { container } from 'tsyringe';
 import CreateClientService from '../services/CreateClientService';
 import DeleteClientService from '../services/DeleteClientService';
 import ListClientsService from '../services/ListClientsService';
+import ShowClientDetailsService from '../services/ShowClientDetailsService';
+import UpdateClientService from '../services/UpdateClientService';
 
 export default class ClientController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -21,7 +23,7 @@ export default class ClientController {
       habits,
       c_history,
       e_history,
-      facial_evoluation,
+      facial_evaluation,
       anotations,
     } = request.body;
 
@@ -33,7 +35,7 @@ export default class ClientController {
       habits,
       c_history,
       e_history,
-      facial_evoluation,
+      facial_evaluation,
       anotations,
     });
 
@@ -41,12 +43,49 @@ export default class ClientController {
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
-    const { id } = request.body;
+    const { id } = request.params;
 
     const deleteClient = container.resolve(DeleteClientService);
 
     await deleteClient.execute(id);
 
     return response.status(200).send();
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const showClient = container.resolve(ShowClientDetailsService);
+
+    const client = await showClient.execute(id);
+
+    return response.json(client);
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const {
+      personal_data,
+      habits,
+      c_history,
+      e_history,
+      facial_evaluation,
+      anotations,
+    } = request.body;
+
+    const updateClient = container.resolve(UpdateClientService);
+
+    const client = await updateClient.execute({
+      client_id: id,
+      personal_data,
+      habits,
+      c_history,
+      e_history,
+      facial_evaluation,
+      anotations,
+    });
+
+    return response.json(client);
   }
 }
