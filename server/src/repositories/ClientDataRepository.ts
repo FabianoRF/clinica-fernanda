@@ -15,8 +15,7 @@ class ClientDataRepository implements IClientDataRepository {
     client_id,
     personal_data,
     habits,
-    c_history,
-    e_history,
+    history,
     facial_evaluation,
     anotations,
   }: ICreateClientDataDTO): Promise<ClientData> {
@@ -24,8 +23,7 @@ class ClientDataRepository implements IClientDataRepository {
       client_id,
       personal_data,
       habits,
-      c_history,
-      e_history,
+      history,
       facial_evaluation,
       anotations,
     });
@@ -45,8 +43,7 @@ class ClientDataRepository implements IClientDataRepository {
     client_id,
     personal_data,
     habits,
-    c_history,
-    e_history,
+    history,
     facial_evaluation,
     anotations,
   }: ICreateClientDataDTO): Promise<ClientData | undefined> {
@@ -59,8 +56,7 @@ class ClientDataRepository implements IClientDataRepository {
         ...clientData,
         personal_data,
         habits,
-        c_history,
-        e_history,
+        history,
         facial_evaluation,
         anotations,
       };

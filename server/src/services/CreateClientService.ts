@@ -8,8 +8,7 @@ interface IRequest {
   name: string;
   personal_data: object;
   habits: object;
-  c_history: object;
-  e_history: object;
+  history: object;
   facial_evaluation: object;
   anotations: object;
 }
@@ -32,8 +31,7 @@ class CreateClientService {
     name,
     personal_data,
     habits,
-    c_history,
-    e_history,
+    history,
     facial_evaluation,
     anotations,
   }: IRequest): Promise<IClientResponse> {
@@ -44,9 +42,8 @@ class CreateClientService {
     const clientData = await this.clientDataRepository.create({
       client_id: client_id.toString(),
       anotations: JSON.stringify(anotations),
-      c_history: JSON.stringify(c_history),
+      history: JSON.stringify(history),
       facial_evaluation: JSON.stringify(facial_evaluation),
-      e_history: JSON.stringify(e_history),
       habits: JSON.stringify(habits),
       personal_data: JSON.stringify(personal_data),
     });

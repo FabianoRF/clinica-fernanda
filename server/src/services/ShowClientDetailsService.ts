@@ -5,8 +5,7 @@ import ClientDataRepository from '../repositories/ClientDataRepository';
 interface IResponse {
   personal_data: object;
   habits: object;
-  c_history: object;
-  e_history: object;
+  history: object;
   facial_evaluation: object;
   anotations: object;
 }
@@ -28,8 +27,7 @@ class ShowClientDetailsService {
     const responseClient = {
       personal_data: JSON.parse(clientData.personal_data),
       habits: JSON.parse(clientData.habits),
-      c_history: JSON.parse(clientData.c_history),
-      e_history: JSON.parse(clientData.e_history),
+      history: JSON.parse(clientData.history),
       facial_evaluation: JSON.parse(clientData.facial_evaluation),
       anotations: JSON.parse(clientData.anotations),
     };

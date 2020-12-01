@@ -21,8 +21,7 @@ export default class ClientController {
       name,
       personal_data,
       habits,
-      c_history,
-      e_history,
+      history,
       facial_evaluation,
       anotations,
     } = request.body;
@@ -33,8 +32,7 @@ export default class ClientController {
       name,
       personal_data,
       habits,
-      c_history,
-      e_history,
+      history,
       facial_evaluation,
       anotations,
     });
@@ -68,8 +66,7 @@ export default class ClientController {
     const {
       personal_data,
       habits,
-      c_history,
-      e_history,
+      history,
       facial_evaluation,
       anotations,
     } = request.body;
@@ -80,8 +77,7 @@ export default class ClientController {
       client_id: id,
       personal_data,
       habits,
-      c_history,
-      e_history,
+      history,
       facial_evaluation,
       anotations,
     });

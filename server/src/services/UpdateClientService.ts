@@ -6,8 +6,7 @@ interface IRequest {
   client_id: string;
   personal_data: object;
   habits: object;
-  c_history: object;
-  e_history: object;
+  history: object;
   facial_evaluation: object;
   anotations: object;
 }
@@ -15,8 +14,7 @@ interface IRequest {
 interface IResponse {
   personal_data: object;
   habits: object;
-  c_history: object;
-  e_history: object;
+  history: object;
   facial_evaluation: object;
   anotations: object;
 }
@@ -32,17 +30,15 @@ class UpdateClientService {
     client_id,
     personal_data,
     habits,
-    c_history,
-    e_history,
+    history,
     facial_evaluation,
     anotations,
   }: IRequest): Promise<IResponse> {
     const clientData = await this.clientDataRepository.update({
       client_id,
       anotations: JSON.stringify(anotations),
-      c_history: JSON.stringify(c_history),
+      history: JSON.stringify(history),
       facial_evaluation: JSON.stringify(facial_evaluation),
-      e_history: JSON.stringify(e_history),
       habits: JSON.stringify(habits),
       personal_data: JSON.stringify(personal_data),
     });
@@ -54,8 +50,7 @@ class UpdateClientService {
     const responseClient = {
       personal_data: JSON.parse(clientData.personal_data),
       habits: JSON.parse(clientData.habits),
-      c_history: JSON.parse(clientData.c_history),
-      e_history: JSON.parse(clientData.e_history),
+      history: JSON.parse(clientData.history),
       facial_evaluation: JSON.parse(clientData.facial_evaluation),
       anotations: JSON.parse(clientData.anotations),
     };

@@ -15,10 +15,7 @@ class ClientData {
   habits: string;
 
   @Column()
-  c_history: string;
-
-  @Column()
-  e_history: string;
+  history: string;
 
   @Column()
   facial_evaluation: string;
