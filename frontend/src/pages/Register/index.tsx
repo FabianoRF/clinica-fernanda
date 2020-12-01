@@ -2,11 +2,30 @@ import React, { useCallback, useRef } from 'react';
 import { Form } from '@unform/web';
 
 import { FormHandles } from '@unform/core';
+import { FiChevronUp } from 'react-icons/fi';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import CheckBoxInput from '../../components/CheckBoxInput';
+import Select from '../../components/Select';
+import Textarea from '../../components/Textarea';
 
-import { Content } from './styles';
+import { Content, Footer } from './styles';
+import {
+  checkboxYesNoOptions,
+  checkboxGoodBadOptions,
+  checkbox3Options,
+  optionsCutaneoB,
+  optionsCutaneoE,
+  optionsTexture,
+  optionsExpessure,
+  optionsOstios,
+  optionsAcne,
+  optionsInvolutionC,
+  optionsFototipe,
+  optionsLesions,
+  optionsScars,
+  optionsFlaccidity,
+} from '../../utils/models/optionsModels';
 
 interface RegisterFormData {
   name: string;
@@ -14,30 +33,11 @@ interface RegisterFormData {
   adress: string;
   number: string;
   work: string;
-}
-
-interface CheckboxOption {
-  id: string;
-  value: string;
-  label: string;
+  objective: string;
 }
 
 const Register: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-
-  const checkboxYesNoOptions: CheckboxOption[] = [
-    { id: 'yes', value: 'true', label: 'sim' },
-    { id: 'no', value: 'false', label: 'não' },
-  ];
-  const checkboxGoodBadOptions: CheckboxOption[] = [
-    { id: 'good', value: 'bom', label: 'bom' },
-    { id: 'bad', value: 'ruim', label: 'ruim' },
-  ];
-  const checkbox3Options: CheckboxOption[] = [
-    { id: 'good', value: 'bom', label: 'bom' },
-    { id: 'medium', value: 'médio', label: 'médio' },
-    { id: 'bad', value: 'ruim', label: 'ruim' },
-  ];
 
   const handleSubmit = useCallback((data: RegisterFormData) => {
     console.log(data);
@@ -48,11 +48,11 @@ const Register: React.FC = () => {
       <Header />
 
       <Content>
-        <h2>Cadastro</h2>
+        <h1>Cadastro</h1>
 
         <Form onSubmit={handleSubmit} ref={formRef}>
           <section>
-            <h3>Dados Pessoais</h3>
+            <h2>Dados Pessoais</h2>
             <div id="grid3x1">
               <Input name="name" type="text" labelTitle="Nome:" />
               <Input name="age" type="number" labelTitle="Idade:" />
@@ -70,7 +70,7 @@ const Register: React.FC = () => {
           </section>
 
           <section>
-            <h3>Hábitos Diários</h3>
+            <h2>Hábitos Diários</h2>
             <div className="checkbox-section">
               <CheckBoxInput
                 labelTitle="Usa Lente ou óculos:"
@@ -143,7 +143,7 @@ const Register: React.FC = () => {
           </section>
 
           <section>
-            <h3>Histórico clínico e estético</h3>
+            <h2>Histórico clínico e estético</h2>
             <div className="checkbox-section">
               <div id="group">
                 <CheckBoxInput
@@ -241,18 +241,134 @@ const Register: React.FC = () => {
           </section>
 
           <section>
-            <h3>Avaliação facial:</h3>
-            {/* <CheckBoxInput name="lens" options={checkboxYesNoOptions} /> */}
+            <h2>Avaliação facial:</h2>
+            <div className="checkbox-section">
+              <Select
+                labelTitle="Biotipo Cutâneo:"
+                name="cutaneoB"
+                options={optionsCutaneoB}
+              />
+
+              <div id="group">
+                <Select
+                  labelTitle="Estado Cutâneo:"
+                  name="cutaneoE"
+                  options={optionsCutaneoE}
+                />
+                <Input name="cutaneoEField" labelTitle="Análise:" isGroup />
+              </div>
+
+              <Select
+                labelTitle="Estado Cutâneo:"
+                name="cutaneoE"
+                options={optionsCutaneoE}
+              />
+
+              <Select
+                labelTitle="Textura:"
+                name="texture"
+                options={optionsTexture}
+              />
+              <Select
+                labelTitle="Espessura:"
+                name="expressure"
+                options={optionsExpessure}
+              />
+
+              <div id="group">
+                <Select
+                  labelTitle="Óstios:"
+                  name="ostios"
+                  options={optionsOstios}
+                />
+                <Input name="ostilosField" labelTitle="Região:" isGroup />
+              </div>
+
+              <Select labelTitle="Acne:" name="acne" options={optionsAcne} />
+
+              <div id="group">
+                <Select
+                  labelTitle="Involução Cutãnea:"
+                  name="involutionC"
+                  options={optionsInvolutionC}
+                />
+                <Input name="invlolutionCField" labelTitle="Região:" isGroup />
+              </div>
+
+              <Select
+                labelTitle="Fototipo Cutâneo:"
+                name="fototipe"
+                options={optionsFototipe}
+              />
+              <Select
+                isMulti
+                labelTitle="Lesões de Pele:"
+                name="lesions"
+                options={optionsLesions}
+              />
+              <Select
+                labelTitle="Cicatriz"
+                name="scars"
+                options={optionsScars}
+              />
+              <div id="group">
+                <Input name="stains" labelTitle="Manchas:" />
+                <Input name="stainsDiagnostic" labelTitle="Diagnóstico:" />
+              </div>
+
+              <Select
+                labelTitle="Flacidez"
+                name="flaccidity"
+                options={optionsFlaccidity}
+              />
+            </div>
           </section>
 
           <section>
-            <h3>Relato do incômodo:</h3>
-            {/* <CheckBoxInput name="lens" options={checkboxYesNoOptions} /> */}
-          </section>
+            <h2>Relato do incômodo:</h2>
 
-          <button type="submit">Cadastrar</button>
+            <div id="group">
+              <h4>Objetivo</h4>
+              <Textarea name="objective" />
+            </div>
+
+            <div id="group">
+              <h4>Tratamento Proposto</h4>
+              <Textarea name="tratament" />
+            </div>
+
+            <div id="group">
+              <h4>Orientações dadas</h4>
+              <Textarea name="orientations" />
+            </div>
+
+            <div id="group">
+              <h4>Home Care proposto</h4>
+              <Textarea name="homecare" />
+            </div>
+
+            <div id="group">
+              <h4>Acompanhamento</h4>
+              <Textarea name="monitoring" />
+            </div>
+          </section>
+          <div>
+            <button type="submit">Cadastrar</button>
+          </div>
         </Form>
       </Content>
+
+      <Footer>
+        <button
+          type="button"
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
+          <FiChevronUp size={30} color="#fff" />
+          Voltar ao topo
+        </button>
+      </Footer>
     </>
   );
 };

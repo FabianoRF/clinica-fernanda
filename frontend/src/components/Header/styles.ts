@@ -30,6 +30,9 @@ export const Logo = styled.div`
     font-family: Norican;
     font-size: 46px;
   }
+  span {
+    margin-top: -10px;
+  }
 `;
 
 export const HeaderOptions = styled.div`

@@ -23,7 +23,7 @@ export const Container = styled.div<ContainerProps>`
 
           input {
             border: 0;
-            border-bottom: 1px solid;
+            border-bottom: 1px solid #b4b4b4;
             flex: 1;
           }
         `
@@ -33,7 +33,7 @@ export const Container = styled.div<ContainerProps>`
             border: 0;
             padding: 7px;
 
-            border: 1px solid;
+            border: 1px solid #b4b4b4;
           }
         `}
 `;
