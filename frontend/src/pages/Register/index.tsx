@@ -49,7 +49,7 @@ interface RegisterFormData {
 const Register: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async (data: RegisterFormData) => {
+  const handleSubmit = useCallback((data: RegisterFormData) => {
     window.alert('Cadastro realizado com sucesso!');
     // const response = await api.post('/clients', data);
     console.log(data);
